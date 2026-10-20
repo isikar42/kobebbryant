@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pricing · Agent Lab</title>
+  <meta name="description" content="Free Agent Fit Scan, a pilot with a results guarantee, monthly Agent plans and Fleet discounts. Founding customers get their pilot free.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header data-site-header></header>
+
+  <main>
+    <section id="pricing" class="section page-top">
+      <h1>Pricing</h1>
+      <p>Start small and grow only when it works: Scan → Pilot → Agent → Fleet.</p>
+
+      <div class="founding" id="founding">
+        <div>
+          <p class="kicker">Founding customer offer</p>
+          <h3>Your pilot is on us. Only <span data-spots-total>10</span> spots.</h3>
+          <p>In return, we ask for a testimonial and a case study about your pilot.</p>
+        </div>
+        <div class="founding-side">
+          <p class="spots"><strong data-spots-left>10</strong> of <span data-spots-total>10</span> spots left</p>
+          <a class="btn primary" href="/?plan=pilot#contact" data-founding-cta>Claim a founding spot</a>
+        </div>
+      </div>
+
+      <div class="billing-switch" role="radiogroup" aria-label="Billing period">
+        <label><input type="radio" name="billing" value="monthly" checked> Monthly</label>
+        <label><input type="radio" name="billing" value="annual"> Annual <span class="save">2 months free</span></label>
+      </div>
+
+      <div class="packages">
+        <article class="package">
+          <p class="step">Step 1</p>
+          <h3>Scan</h3>
+          <p class="price">Free</p>
+          <p class="package-desc">Find out where an agent fits, and where it doesn't.</p>
+          <ul>
+            <li>45–60 minute call</li>
+            <li>Short report with suitable processes</li>
+            <li>Estimated time saved</li>
+            <li>Honest advice, also when the answer is no</li>
+          </ul>
+          <a class="btn" href="/?plan=scan#contact">Book a free Fit Scan</a>
+        </article>
+
+        <article class="package">
+          <p class="step">Step 2</p>
+          <h3>Pilot</h3>
+          <p class="price"><span data-price="pilot">[price]</span><span> one-time</span></p>
+          <p class="package-desc">One agent on one process for 2–4 weeks, measured against your current way of working.</p>
+          <ul>
+            <li>One agent for one process</li>
+            <li>Runs 2–4 weeks</li>
+            <li>Time saved measured before and after</li>
+          </ul>
+          <p class="guarantee"><strong>Pay for results, not promises.</strong> If your agent doesn't save time in the pilot, you don't pay.</p>
+          <a class="btn" href="/?plan=pilot#contact">Start a pilot</a>
+        </article>
+
+        <article class="package featured">
+          <p class="step">Step 3</p>
+          <h3>Agent</h3>
+          <p class="price"><span data-price="agent">[price]</span><span> / month</span></p>
+          <p class="billing-note" data-annual-note>2 months free with annual billing</p>
+          <p class="package-desc">Your agent in daily use, with support and improvements.</p>
+          <ul>
+            <li>One agent in production</li>
+            <li>Monitoring and support</li>
+            <li>Regular improvements</li>
+          </ul>
+          <a class="btn primary" href="/?plan=agent#contact">Choose Agent</a>
+        </article>
+
+        <article class="package">
+          <p class="step">Step 4</p>
+          <h3>Fleet</h3>
+          <p class="price"><span data-price="fleet">[price]</span><span> / agent / month</span></p>
+          <p class="billing-note"><span data-fleet-discount>[X]%</span> off for every extra agent</p>
+          <p class="package-desc">Several agents working across your processes.</p>
+          <ul>
+            <li>Multiple agents</li>
+            <li>Discount per extra agent</li>
+            <li>One point of contact</li>
+          </ul>
+          <a class="btn" href="/?plan=fleet#contact">Talk about Fleet</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Review these answers: they describe how your offer and guarantee work. -->
+    <section id="faq" class="section">
+      <h2>Pricing FAQ</h2>
+      <div class="faq">
+        <details>
+          <summary>How does the results guarantee work?</summary>
+          <p>
+            Before the pilot starts, we agree on which task the agent takes over and how we measure
+            the time it takes today. At the end of the pilot we measure again. If the agent did not
+            save time, you don't pay for the pilot.
+          </p>
+        </details>
+        <details>
+          <summary>What does annual billing give me?</summary>
+          <p>With annual billing for the Agent plan you pay for 10 months and get 12.</p>
+        </details>
+        <details>
+          <summary>How is Fleet priced?</summary>
+          <p>Fleet is for several agents. Every extra agent gets a discount on the Agent price.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer data-site-footer></footer>
+
+  <script src="/config.js"></script>
+  <script src="/agents-data.js"></script>
+  <script src="/layout.js"></script>
+  <script src="/agents.js"></script>
+  <script src="/sales.js"></script>
+</body>
+</html>

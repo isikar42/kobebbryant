@@ -3,46 +3,33 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>30 Diamonds</title>
-  <meta name="description" content="A personal learning project about AI agents: what they are, how the agent loop works, and a learning path.">
+  <title>Agent Lab · AI agents for businesses</title>
+  <meta name="description" content="AI agents that take repetitive work off your team. Start with a free Agent Fit Scan to find out honestly whether an agent is worth it.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
-  <link rel="stylesheet" href="styles.css"></head>
+  <link rel="stylesheet" href="/styles.css">
+</head>
 <body>
-  <header class="site-header">
-    <a class="logo" href="#top">
-      <svg class="logo-mark" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M6 3h12l4 6-10 12L2 9z" />
-        <path d="M2 9h20M9 3 7.5 9 12 21l4.5-12L15 3" />
-      </svg>
-      <span>Agent<em>Lab</em></span>
-    </a>
-    <nav>
-      <a href="#what">What is an agent?</a>
-      <a href="#demo">Demo</a>
-      <a href="#roadmap-section">Learning path</a>
-      <a href="#glossary">Glossary</a>
-    </nav>
-  </header>
+  <header data-site-header></header>
 
   <main id="top">
     <section class="hero">
       <div class="hero-text">
-        <p class="eyebrow"><span class="pulse" aria-hidden="true"></span>Personal project · learning in public</p>
-        <h1>How does an AI agent <span class="gradient-text">think, choose and act?</span></h1>
+        <p class="eyebrow"><span class="pulse" aria-hidden="true"></span>AI agents for businesses</p>
+        <h1>Put AI agents to work <span class="gradient-text">where they actually help.</span></h1>
         <p class="lead">
-          This site is where I learn about AI agents. It has explanations, an interactive
-          demo of the agent loop, and a learning path where I track my progress.
+          Not sure where AI fits? Start with a free Agent Fit Scan. We'll tell you honestly
+          if an agent is worth it, even if the answer is no.
         </p>
         <div class="hero-actions">
-          <a class="btn primary btn-lg" href="#demo">Try the demo <span aria-hidden="true">→</span></a>
-          <a class="btn btn-lg" href="#roadmap-section">See the learning path</a>
+          <a class="btn primary btn-lg" href="#contact" data-plan="scan">Book a free Fit Scan <span aria-hidden="true">→</span></a>
+          <a class="btn btn-lg" href="/agents#demo">See how an agent works</a>
         </div>
         <ul class="hero-stats">
-          <li><strong>5</strong><span>tools to play with</span></li>
-          <li><strong>2</strong><span>agent modes</span></li>
-          <li><strong>7</strong><span>learning stages</span></li>
+          <li><strong>Free</strong><span>Agent Fit Scan</span></li>
+          <li><strong>2–4 weeks</strong><span>pilot</span></li>
+          <li><strong data-spots-left>10</strong><span>founding spots left</span></li>
         </ul>
       </div>
 
@@ -72,147 +59,142 @@
       </figure>
     </section>
 
-    <div class="features">
-      <a class="feature" href="#what">
-        <span class="feature-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M4 19.5V6a2 2 0 0 1 2-2h13v14H6a2 2 0 0 0-2 2zm0 0A2 2 0 0 0 6 22h13" /></svg>
-        </span>
-        <h3>Learn</h3>
-        <p>What an agent is, and the loop every agent runs.</p>
-      </a>
-      <a class="feature" href="#demo">
-        <span class="feature-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M9 3h6M10 3v6L4.5 18.5A2 2 0 0 0 6.2 21.5h11.6a2 2 0 0 0 1.7-3L14 9V3" /></svg>
-        </span>
-        <h3>Experiment</h3>
-        <p>Give an agent a goal and watch every step it takes.</p>
-      </a>
-      <a class="feature" href="#roadmap-section">
-        <span class="feature-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2" /></svg>
-        </span>
-        <h3>Track progress</h3>
-        <p>Seven stages from first prompt to multi-agent systems.</p>
-      </a>
-    </div>
+    <section id="agents" class="section">
+      <div class="section-head">
+        <h2>Our agents</h2>
+        <a href="/agents">See all agents →</a>
+      </div>
+      <div class="agent-cards" data-agent-cards></div>
+    </section>
 
-    <section id="what" class="section">
-      <h2>What is an AI agent?</h2>
-      <p>
-        A chatbot gives one answer and stops. An <strong>agent</strong> gets a goal and
-        works toward it on its own. It repeats a fixed loop: it thinks about the next step,
-        uses a <em>tool</em>, looks at the result, and decides whether it is done.
-      </p>
-
+    <section id="how-we-work" class="section">
+      <h2>How we work</h2>
+      <p>Start small and grow only when it works.</p>
       <ol class="loop">
-        <li><span class="step-num">1</span><h3>Goal</h3><p>The user gives a task.</p></li>
-        <li><span class="step-num">2</span><h3>Think</h3><p>The model plans the next step.</p></li>
-        <li><span class="step-num">3</span><h3>Act</h3><p>The model calls a tool, such as search, a calculator or an API.</p></li>
-        <li><span class="step-num">4</span><h3>Observe</h3><p>The tool's result goes back to the model.</p></li>
-        <li><span class="step-num">5</span><h3>Done?</h3><p>No: back to step 2. Yes: the model gives an answer.</p></li>
+        <li><span class="step-num">1</span><h3>Scan</h3><p>A free call and short report on where an agent fits.</p></li>
+        <li><span class="step-num">2</span><h3>Pilot</h3><p>One agent on one process for 2–4 weeks, measured.</p></li>
+        <li><span class="step-num">3</span><h3>Agent</h3><p>The agent in daily use, with support.</p></li>
+        <li><span class="step-num">4</span><h3>Fleet</h3><p>More agents, with a discount per extra agent.</p></li>
       </ol>
 
-      <div class="cards">
-        <article class="card">
-          <h3>Model (LLM)</h3>
-          <p>The "brain". It understands language, makes a plan and picks the right tool.</p>
-        </article>
-        <article class="card">
-          <h3>Tools</h3>
-          <p>Functions the agent is allowed to call. Each tool has a name, a description and parameters.</p>
-        </article>
-        <article class="card">
-          <h3>Memory</h3>
-          <p>What the agent keeps: the conversation history, notes or a knowledge base (RAG).</p>
-        </article>
-        <article class="card">
-          <h3>Guardrails</h3>
-          <p>A maximum number of steps, asking permission for risky actions, and logging.</p>
-        </article>
+      <div class="fit-scan">
+        <div>
+          <p class="kicker">Start here · free</p>
+          <h3 class="fit-scan-title">Agent Fit Scan</h3>
+          <p>
+            Not sure where AI fits? Start with a free Agent Fit Scan. We'll tell you honestly
+            if an agent is worth it, even if the answer is no.
+          </p>
+          <a class="btn primary btn-lg" href="#contact" data-plan="scan">Book a free Fit Scan <span aria-hidden="true">→</span></a>
+        </div>
+        <ul class="check-list">
+          <li><strong>A 45–60 minute call</strong> about your processes and where time goes.</li>
+          <li><strong>A short report</strong> on which processes suit an agent, with an estimate of the time saved.</li>
+          <li><strong>Honest advice</strong>, including when an agent is not the right fit.</li>
+        </ul>
       </div>
+
     </section>
 
-    <section id="demo" class="section">
-      <h2>Demo: the agent loop in action</h2>
-      <p>
-        Choose <strong>Simulated</strong> to see an agent that picks its tools with simple rules.
-        Choose <strong>Claude</strong> to run a real language model with the same tools. Claude
-        only works when the agent server is running.
-      </p>
-
-      <div class="demo">
-        <div class="mode-switch" role="radiogroup" aria-label="Agent mode">
-          <label><input type="radio" name="mode" value="sim" checked> Simulated (rules)</label>
-          <label><input type="radio" name="mode" value="claude"> Claude (real LLM)</label>
-          <span id="mode-note" class="mode-note"></span>
-        </div>
-
-        <form id="agent-form" class="agent-form">
-          <label for="goal">Give the agent a goal</label>
-          <div class="input-row">
-            <input id="goal" type="text" autocomplete="off"
-                   placeholder="E.g. What is (12 + 8) * 3 and what day is it today?">
-            <button class="btn primary" type="submit">Run</button>
-          </div>
-          <div class="examples">
-            <span>Examples:</span>
-            <button type="button" class="chip">What is (12 + 8) * 3?</button>
-            <button type="button" class="chip">What day is it today?</button>
-            <button type="button" class="chip">Remember that I love basketball</button>
-            <button type="button" class="chip">What do you know about me?</button>
-            <button type="button" class="chip">Count the words in "agents are loops with tools"</button>
-          </div>
-        </form>
-
-        <div class="demo-grid">
-          <div class="panel">
-            <div class="panel-head">
-              <h3>Trace</h3>
-              <span id="status" class="status">Waiting for a goal</span>
-            </div>
-            <ol id="trace" class="trace"></ol>
-          </div>
-          <aside class="panel">
-            <h3>Available tools</h3>
-            <ul id="tool-list" class="tool-list"></ul>
-            <h3>Memory</h3>
-            <ul id="memory" class="memory"><li class="muted">Empty</li></ul>
-          </aside>
-        </div>
-      </div>
-    </section>
-
-    <section id="roadmap-section" class="section">
+    <section id="pricing-summary" class="section">
       <div class="section-head">
-        <h2>Learning path</h2>
-        <div class="progress-wrap">
-          <div class="progress"><div id="progress-bar"></div></div>
-          <span id="progress-label">0%</span>
-        </div>
+        <h2>Pricing at a glance</h2>
+        <a href="/pricing">See full pricing →</a>
       </div>
-      <p>Check off what you have done. Your progress is saved in this browser only.</p>
-      <div id="roadmap" class="roadmap"></div>
+      <ul class="price-summary">
+        <li><span>Scan</span><strong>Free</strong></li>
+        <li><span>Pilot</span><strong data-price="pilot">[price]</strong><small>one-time</small></li>
+        <li><span>Agent</span><strong data-price="agent">[price]</strong><small>per month</small></li>
+        <li><span>Fleet</span><strong data-fleet-discount>[X]%</strong><small>off per extra agent</small></li>
+      </ul>
+      <p class="fine-print">Founding customers get their pilot for free: <strong data-spots-left>10</strong> of <span data-spots-total>10</span> spots left. <a href="/pricing#founding">How it works</a></p>
     </section>
 
-    <section id="glossary" class="section">
-      <h2>Glossary</h2>
-      <dl class="glossary">
-        <dt>LLM</dt><dd>Large Language Model. A model that predicts text, such as Claude.</dd>
-        <dt>Tool use / function calling</dt><dd>Besides text, the model can return a structured request to call a function. Your code runs that function.</dd>
-        <dt>ReAct</dt><dd>Reason + Act. A pattern where the model alternates between reasoning and taking actions.</dd>
-        <dt>RAG</dt><dd>Retrieval-Augmented Generation. First fetch relevant documents, then give them to the model.</dd>
-        <dt>MCP</dt><dd>Model Context Protocol. An open standard for connecting tools and data sources to agents.</dd>
-        <dt>Multi-agent</dt><dd>Several agents with their own roles working together, for example a planner and an executor.</dd>
-        <dt>Evals</dt><dd>Tests that measure whether an agent does its tasks correctly and reliably.</dd>
-        <dt>Prompt injection</dt><dd>Outside text, such as a web page, that tries to make the agent do something its creator did not intend.</dd>
-      </dl>
+    <!-- Review these answers: they describe how your offer and guarantee work. -->
+    <section id="faq" class="section">
+      <h2>FAQ</h2>
+      <div class="faq">
+        <details>
+          <summary>How does the results guarantee work?</summary>
+          <p>
+            Before the pilot starts, we agree on which task the agent takes over and how we measure
+            the time it takes today. At the end of the pilot we measure again. If the agent did not
+            save time, you don't pay for the pilot.
+          </p>
+        </details>
+        <details>
+          <summary>What happens in the free Agent Fit Scan?</summary>
+          <p>
+            We talk for 45–60 minutes about your processes and where time goes. Afterwards you get a
+            short report: which processes suit an agent, an estimate of the time saved, and an honest
+            opinion if an agent is not worth it.
+          </p>
+        </details>
+        <details>
+          <summary>What is the founding customer offer?</summary>
+          <p>
+            The first <span data-spots-total>10</span> customers get their pilot for free. In return we
+            ask for a testimonial and a case study about the pilot.
+          </p>
+        </details>
+        <details>
+          <summary>Which agent fits my business?</summary>
+          <p>
+            That is what the free Fit Scan is for. We look at where your team spends time and tell
+            you which agent fits, if any.
+          </p>
+        </details>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <h2>Contact</h2>
+      <p>Tell us a little about your work. Sending opens your email app with the message filled in.</p>
+
+      <form id="contact-form" class="contact-form">
+        <div class="field">
+          <label for="c-name">Name</label>
+          <input id="c-name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="c-company">Company</label>
+          <input id="c-company" name="company" type="text" autocomplete="organization">
+        </div>
+        <div class="field">
+          <label for="c-email">Email</label>
+          <input id="c-email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="c-interest">I'm interested in</label>
+          <select id="c-interest" name="interest">
+            <option value="scan" selected>Free Agent Fit Scan</option>
+            <option value="pilot">Pilot (founding offer)</option>
+            <option value="agent">Agent</option>
+            <option value="fleet">Fleet</option>
+          </select>
+        </div>
+        <div class="field field-wide">
+          <label for="c-agent">Which agent?</label>
+          <select id="c-agent" name="agent"></select>
+        </div>
+        <div class="field field-wide">
+          <label for="c-message">Message</label>
+          <textarea id="c-message" name="message" rows="6"></textarea>
+        </div>
+        <div class="field-wide form-actions">
+          <button class="btn primary" type="submit">Send</button>
+          <span id="contact-status" class="fine-print" aria-live="polite"></span>
+        </div>
+      </form>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <p>Agent Lab, a personal learning project about AI agents.</p>
-  </footer>
+  <footer data-site-footer></footer>
 
-  <script src="app.js"></script>
+  <script src="/config.js"></script>
+  <script src="/agents-data.js"></script>
+  <script src="/layout.js"></script>
+  <script src="/agents.js"></script>
+  <script src="/sales.js"></script>
 </body>
 </html>

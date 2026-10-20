@@ -35,6 +35,8 @@ const MIME = {
   ".svg": "image/svg+xml",
   ".png": "image/png",
   ".ico": "image/x-icon",
+  ".xml": "application/xml; charset=utf-8",
+  ".txt": "text/plain; charset=utf-8",
 };
 
 // Reads ANTHROPIC_API_KEY (or an `ant auth login` profile) from the environment.
@@ -146,10 +148,19 @@ async function serveStatic(req, res) {
     return sendJson(res, 404, { error: "Not found" });
   }
 
+  // Clean URLs: /pricing serves pricing.html, /agents/darkhawk serves agents/darkhawk.html.
+  const candidates = path.extname(filePath) ? [filePath] : [filePath + ".html", path.join(filePath, "index.html")];
+  for (const candidate of candidates) {
+    try {
+      const data = await fs.readFile(candidate);
+      res.writeHead(200, { "Content-Type": MIME[path.extname(candidate)] ?? "application/octet-stream" });
+      return res.end(data);
+    } catch { /* try the next candidate */ }
+  }
+
   try {
-    const data = await fs.readFile(filePath);
-    res.writeHead(200, { "Content-Type": MIME[path.extname(filePath)] ?? "application/octet-stream" });
-    res.end(data);
+    res.writeHead(404, { "Content-Type": MIME[".html"] });
+    res.end(await fs.readFile(path.join(SITE_DIR, "404.html")));
   } catch {
     sendJson(res, 404, { error: "Not found" });
   }

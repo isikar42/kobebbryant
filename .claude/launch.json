@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "agent-lab",
+      "runtimeExecutable": "powershell.exe",
+      "runtimeArgs": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "C:\\Users\\ALIISI~1\\AppData\\Local\\Temp\\claude\\C--Users-AliIsikReliance-Downloads-kobebbryant-main\\0a8efda3-1ad5-47a0-9492-03d58a7c74c2\\scratchpad\\serve.ps1", "-Root", "C:\\Users\\AliIsikReliance\\Downloads\\kobebbryant-main\\kobebbryant-main", "-Port", "8080"],
+      "port": 8080
+    }
+  ]
+}

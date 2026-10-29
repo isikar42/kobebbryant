@@ -148,7 +148,7 @@ async function serveStatic(req, res) {
     return sendJson(res, 404, { error: "Not found" });
   }
 
-  // Clean URLs: /pricing serves pricing.html, /agents/darkhawk serves agents/darkhawk.html.
+  // Clean URLs: /pricing serves pricing.html, /agents/front-office serves agents/front-office.html.
   const candidates = path.extname(filePath) ? [filePath] : [filePath + ".html", path.join(filePath, "index.html")];
   for (const candidate of candidates) {
     try {

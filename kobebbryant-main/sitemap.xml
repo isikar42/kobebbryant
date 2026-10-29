@@ -3,12 +3,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://www.example.com/</loc></url>
   <url><loc>https://www.example.com/agents</loc></url>
-  <url><loc>https://www.example.com/agents/cloak-and-dagger</loc></url>
-  <url><loc>https://www.example.com/agents/darkhawk</loc></url>
-  <url><loc>https://www.example.com/agents/graviton</loc></url>
-  <url><loc>https://www.example.com/agents/deathlok</loc></url>
+  <url><loc>https://www.example.com/agents/front-office</loc></url>
+  <url><loc>https://www.example.com/agents/back-office</loc></url>
+  <url><loc>https://www.example.com/agents/code-guard</loc></url>
   <url><loc>https://www.example.com/pricing</loc></url>
+  <url><loc>https://www.example.com/security</loc></url>
   <url><loc>https://www.example.com/roi-calculator</loc></url>
+  <url><loc>https://www.example.com/faq</loc></url>
   <url><loc>https://www.example.com/about</loc></url>
   <url><loc>https://www.example.com/privacy</loc></url>
   <url><loc>https://www.example.com/terms</loc></url>

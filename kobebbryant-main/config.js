@@ -5,19 +5,28 @@ window.SITE_CONFIG = {
   // Where the contact form sends to (opens the visitor's email app).
   contactEmail: "contact@example.com", // PLACEHOLDER: your business email
 
+  // TODO: set prices (monthly, in €). null shows "[price]".
   prices: {
-    pilot: null,               // PLACEHOLDER: one-time pilot price in €, e.g. 1500
-    agentMonthly: null,        // PLACEHOLDER: Agent plan per month in €, e.g. 500
-    annualFreeMonths: 2,       // Annual billing = 12 months for the price of 10
-    fleetDiscountPercent: null // PLACEHOLDER: discount per extra agent in %, e.g. 10
+    packages: {            // monthly price per package
+      starter: null,
+      growth: null,
+      complete: null
+    },
+    annualFreeMonths: 2    // Annual billing = 12 months for the price of 10
+  },
+
+  // 30-day trial: "founding" = free for the first customers, "standard" = first month
+  // paid with money back. With no founding spots left, "standard" is used automatically.
+  trial: {
+    variant: "founding"
   },
 
   founding: {
     totalSpots: 10,
-    spotsLeft: 10 // Lower this number when a founding customer signs up
+    spotsLeft: 10 // Lower this number when a free trial spot is taken
   },
 
-  // Starting values for the ROI calculator
+  // Starting values for the ROI calculator (payback is shown against Starter)
   roiDefaults: {
     hoursPerWeek: 10,
     employees: 2,

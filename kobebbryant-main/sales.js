@@ -1,4 +1,4 @@
-// Sales parts: prices and founding spots from config.js, the ROI calculator
+// Sales parts: prices, the 30-day trial and founding spots from config.js, the ROI calculator
 // and the contact form (opens the visitor's email app via mailto:).
 // Each part only runs when its elements are on the current page.
 
@@ -11,10 +11,10 @@
   const $$ = (sel) => document.querySelectorAll(sel);
 
   const PLAN_LABELS = {
-    scan: "Free Agent Fit Scan",
-    pilot: "Pilot (founding offer)",
-    agent: "Agent",
-    fleet: "Fleet",
+    scan: "Free intro call",
+    starter: "30-day trial: Starter",
+    growth: "30-day trial: Growth",
+    complete: "30-day trial: Complete",
   };
 
   const euro = new Intl.NumberFormat("en-IE", { style: "currency", currency: "EUR", maximumFractionDigits: 0 });
@@ -35,30 +35,51 @@
     a.textContent = cfg.contactEmail;
   });
 
-  // ---------- Founding spots ----------
+  // ---------- 30-day trial ----------
+  // The active variant comes from config.js; with no founding spots left it is always "standard".
   const { totalSpots, spotsLeft } = cfg.founding;
+  const trialVariant = cfg.trial.variant === "founding" && spotsLeft > 0 ? "founding" : "standard";
+  const TRIAL_OFFER = {
+    // TODO: check before going live (trial terms)
+    founding: `<strong>Free for our first ${totalSpots} customers.</strong> In return, we ask for honest feedback and a short case study.`,
+    standard: "<strong>Pay your first month as normal.</strong> Not saving time? You get your money back.",
+  };
+  const TRIAL_STEPS = [
+    { when: "Week 1", title: "We set it up", text: "We connect the agent to your inbox or orders and teach it your rules." },
+    { when: "Week 2–4", title: "It works, you approve", text: "The agent does the work. Nothing goes out without your OK. About 10–15 minutes a day." },
+    { when: "Day 30", title: "You see the results", text: "Time saved, accuracy and threats found, in one short report. You decide." },
+  ];
+
+  $$("[data-trial-offer]").forEach((el) => (el.innerHTML = TRIAL_OFFER[trialVariant]));
+  $$("[data-trial-price]").forEach((el) => (el.textContent = trialVariant === "founding" ? "Free" : "First month"));
   $$("[data-spots-total]").forEach((el) => (el.textContent = totalSpots));
   $$("[data-spots-left]").forEach((el) => (el.textContent = spotsLeft));
-  if (spotsLeft <= 0) {
-    $$(".founding .spots").forEach((el) => (el.textContent = "All founding spots are taken."));
-    $$("[data-founding-cta]").forEach((el) => (el.hidden = true));
-    const opt = $('#c-interest option[value="pilot"]');
-    if (opt) opt.textContent = "Pilot";
-    PLAN_LABELS.pilot = "Pilot";
-  }
+  // Spot counters only make sense while the free founding trial is on offer.
+  $$("[data-founding-only]").forEach((el) => (el.hidden = trialVariant !== "founding"));
+
+  $$("[data-trial-steps]").forEach((el) => {
+    el.innerHTML = `
+      <ol class="loop trial-steps">
+        ${TRIAL_STEPS.map((s, i) => `
+          <li><span class="step-num">${i + 1}</span><p class="kicker">${s.when}</p><h3>${s.title}</h3><p>${s.text}</p></li>`).join("")}
+      </ol>
+      <p class="trial-note">Think of it as a trial period for a new team member.</p>`;
+  });
 
   // ---------- Prices ----------
-  const { pilot, agentMonthly, annualFreeMonths, fleetDiscountPercent } = cfg.prices;
+  const { packages, annualFreeMonths } = cfg.prices;
+  const starterMonthly = packages.starter;
 
   function renderPrices() {
     const checked = $('input[name="billing"]:checked');
     const annual = checked ? checked.value === "annual" : false;
     // Annual: shown as the effective monthly price (12 months for the price of 12 - free months)
     const factor = annual ? (12 - annualFreeMonths) / 12 : 1;
-    const agent = agentMonthly == null ? null : agentMonthly * factor;
 
-    $$('[data-price="pilot"]').forEach((el) => (el.textContent = formatPrice(pilot)));
-    $$('[data-price="agent"], [data-price="fleet"]').forEach((el) => (el.textContent = formatPrice(agent)));
+    $$("[data-price]").forEach((el) => {
+      const monthly = packages[el.dataset.price];
+      if (monthly !== undefined) el.textContent = formatPrice(monthly == null ? null : monthly * factor);
+    });
     $$("[data-annual-note]").forEach((el) => {
       el.textContent = annual
         ? `Billed yearly, ${annualFreeMonths} months free included`
@@ -66,9 +87,6 @@
     });
   }
 
-  $$("[data-fleet-discount]").forEach((el) => {
-    el.textContent = fleetDiscountPercent == null ? "[X]%" : `${fleetDiscountPercent}%`;
-  });
   $$("[data-free-months]").forEach((el) => (el.textContent = annualFreeMonths));
   $$('input[name="billing"]').forEach((r) => r.addEventListener("change", renderPrices));
   renderPrices();
@@ -94,11 +112,11 @@
       const hoursSaved = hours * people * WEEKS_PER_MONTH * (share / 100);
       const moneySaved = hoursSaved * rate;
 
-      let payback = "[price needed]"; // shown until agentMonthly is set in config.js
-      if (agentMonthly != null) {
+      let payback = "[price needed]"; // shown until the Starter price is set in config.js
+      if (starterMonthly != null) {
         if (moneySaved <= 0) payback = "–";
         else {
-          const months = agentMonthly / moneySaved;
+          const months = starterMonthly / moneySaved;
           payback = months < 1
             ? `${Math.max(1, Math.round(months * 30))} days`
             : `${months.toFixed(1)} months`;
@@ -128,9 +146,9 @@
         "",
         `Estimated hours saved per month: ${num.format(roi.hoursSaved)} h`,
         `Estimated savings per month: ${euro.format(roi.moneySaved)}`,
-        `Payback vs. the Agent plan: ${roi.payback}`,
+        `Payback vs. the Starter package: ${roi.payback}`,
         "",
-        "I'd like to check this with a free Fit Scan.",
+        "I'd like to check this in a free intro call.",
       ].join("\n"));
     });
   }
@@ -143,7 +161,7 @@
   agentSelect.innerHTML = `<option value="">Not sure yet</option>` +
     agents.map((a) => `<option value="${a.slug}">${a.name} (${a.role})</option>`).join("");
 
-  // Links like /?plan=pilot&agent=darkhawk#contact preselect the form.
+  // Links like /?plan=growth&agent=back-office#contact preselect the form.
   const params = new URLSearchParams(location.search);
   if (PLAN_LABELS[params.get("plan")]) $("#c-interest").value = params.get("plan");
   if (agents.some((a) => a.slug === params.get("agent"))) agentSelect.value = params.get("agent");

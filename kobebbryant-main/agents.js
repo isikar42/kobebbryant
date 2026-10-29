@@ -31,7 +31,19 @@
     return;
   }
 
-  const contactLink = `/?plan=pilot&agent=${agent.slug}#contact`;
+  // Preselects the 30-day trial of the cheapest package that includes this agent.
+  const contactLink = `/?plan=${agent.package}&agent=${agent.slug}#contact`;
+  // Packages in order; an agent is included in its own package and every bigger one.
+  const PACKAGES = [
+    { key: "starter", name: "Starter" },
+    { key: "growth", name: "Growth" },
+    { key: "complete", name: "Complete" },
+  ];
+  const from = PACKAGES.findIndex((p) => p.key === agent.package);
+  const included = PACKAGES.slice(from);
+  const includedText = included.length === 1
+    ? `Included in the ${included[0].name} package.`
+    : `Included in ${included.map((p) => p.name).join(", ").replace(/, ([^,]*)$/, " and $1")}.`;
   const TRACE_LABELS = { think: "Thought", act: "Action", observe: "Observation", answer: "Answer" };
 
   main.querySelector("[data-agent-intro]").innerHTML = `
@@ -75,10 +87,12 @@
       <h2>Price</h2>
       <div class="agent-price">
         <div>
-          <p class="price"><span data-price="agent">[price]</span><span> / month</span></p>
+          <p class="kicker">${includedText}</p>
+          <p class="price"><span class="price-from">From </span><span data-price="${included[0].key}">[price]</span><span> / month</span></p>
           <p class="billing-note" data-annual-note></p>
-          <p>Every agent starts with a 2–4 week pilot. <strong>Pay for results, not promises:</strong>
-            if your agent doesn't save time in the pilot, you don't pay.</p>
+          <p class="includes-report">Includes the <a href="/security">monthly security report</a>.</p>
+          <p class="trial-offer"><strong>Try it for 30 days.</strong> <span data-trial-offer></span></p>
+          ${agent.trialNote ? `<p>${esc(agent.trialNote)}</p>` : ""}
         </div>
         <a class="btn" href="/pricing">See all pricing</a>
       </div>
@@ -93,7 +107,7 @@
 
     <section class="section cta-band">
       <h2>Is ${esc(agent.name)} a fit for you?</h2>
-      <p>Start with a pilot, or ask us first. We'll tell you honestly if it's worth it.</p>
+      <p>Try it for 30 days, or ask us first in a free intro call. We'll tell you honestly if it's worth it.</p>
       <a class="btn primary btn-lg" href="${contactLink}">Contact us about ${esc(agent.name)}</a>
     </section>`;
 })();

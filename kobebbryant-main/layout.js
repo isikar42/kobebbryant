@@ -9,12 +9,15 @@
   const agents = window.AGENTS || [];
 
   const NAV = [
+    { href: "/", label: "Home" },
     { href: "/agents", label: "Agents" },
     { href: "/pricing", label: "Pricing" },
+    { href: "/security", label: "Security" },
     { href: "/roi-calculator", label: "ROI Calculator" },
+    { href: "/faq", label: "FAQ" },
     { href: "/about", label: "About" },
   ];
-  const CTA = { href: "/?plan=scan#contact", label: "Free Fit Scan" };
+  const CTA = { href: "/?plan=scan#contact", label: "Free intro call" };
 
   // Old one-page anchors that moved to their own page
   const MOVED_ANCHORS = {
@@ -28,7 +31,7 @@
     "fit-scan": "/#how-we-work",
   };
 
-  // "/agents/darkhawk.html" and "/agents/darkhawk/" both become "/agents/darkhawk"
+  // "/agents/code-guard.html" and "/agents/code-guard/" both become "/agents/code-guard"
   const normalize = (p) => p.replace(/\/index\.html$/, "/").replace(/\.html$/, "").replace(/(.)\/$/, "$1");
   const here = normalize(location.pathname);
 
@@ -96,7 +99,6 @@
         <nav aria-label="Footer">
           <h3>Pages</h3>
           <ul class="footer-links">
-            <li>${link({ href: "/", label: "Home" })}</li>
             ${NAV.map((n) => `<li>${link(n)}</li>`).join("")}
             <li><a href="/#contact">Contact</a></li>
           </ul>

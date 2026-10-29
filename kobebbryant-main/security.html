@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Security · Agent Lab</title>
+  <meta name="description" content="Every Agent Lab agent comes with a monthly security report. See what's in it and how we protect your data: minimal access, human approval and a log of every step.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Security · Agent Lab">
+  <meta property="og:description" content="AI agents with security built in, not bolted on.">
+  <meta name="twitter:card" content="summary">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header data-site-header></header>
+
+  <main>
+    <section class="section page-top">
+      <h1>Security built in, not bolted on</h1>
+      <p class="lead">
+        Every agent comes with a monthly security report, so you always know what it did,
+        what we blocked, and what you should do next.
+      </p>
+    </section>
+
+    <section id="report" class="section">
+      <h2>Your monthly security report</h2>
+      <div class="cards report-items">
+        <article class="card">
+          <h3>Status at a glance</h3>
+          <p>Green, amber or red, in one page your management can read.</p>
+        </article>
+        <article class="card">
+          <h3>What your agent did</h3>
+          <p>Volume, accuracy, and every task it handed to a person.</p>
+        </article>
+        <article class="card">
+          <h3>Threats we blocked</h3>
+          <p>Suspicious emails, manipulation attempts and actions outside its limits.</p>
+        </article>
+        <article class="card">
+          <h3>Access check</h3>
+          <p>Which systems the agent can reach, and whether it still needs to.</p>
+        </article>
+        <article class="card">
+          <h3>Threats to watch</h3>
+          <p>New risks relevant to your sector this month.</p>
+        </article>
+        <article class="card">
+          <h3>Your action list</h3>
+          <p>Prioritised, practical steps. No jargon.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="data" class="section">
+      <h2>How we protect your data</h2>
+      <ul class="check-list">
+        <li><strong>Only the access it needs.</strong> Each agent gets its own account with the minimum permissions.</li>
+        <li><strong>A person approves what matters.</strong> Payments, outgoing emails and anything unusual wait for sign-off.</li>
+        <li><strong>Every step is logged.</strong> You can always see what the agent did and why.</li>
+        <!-- TODO: verify with chosen AI provider and hosting before going live -->
+        <li><strong>EU-hosted.</strong> Your data stays in the EU and is never used to train AI models.</li>
+        <!-- TODO: verify with chosen AI provider and hosting before going live -->
+        <li><strong>Data processing agreement.</strong> Signed before we connect a single system.</li>
+      </ul>
+    </section>
+
+    <section id="example" class="section">
+      <h2>What a report looks like</h2>
+      <p>A preview with fictional data. Your report covers your own agent and systems.</p>
+
+      <!-- Fictional example data: Contoso is a made-up company. -->
+      <article class="report-mock" aria-label="Example report with fictional data">
+        <header class="report-head">
+          <div>
+            <p class="report-label">Example report · fictional data</p>
+            <h3>Contoso Ltd · Front Office</h3>
+            <p class="report-period">Security report, [Month YYYY]</p>
+          </div>
+          <span class="status-badge amber"><span aria-hidden="true"></span>Status: amber</span>
+        </header>
+
+        <dl class="report-stats">
+          <div><dt>Emails handled</dt><dd>1,240</dd></div>
+          <div><dt>Handed to a person</dt><dd>86</dd></div>
+          <div><dt>Threats blocked</dt><dd>2</dd></div>
+          <div><dt>Systems with access</dt><dd>3</dd></div>
+        </dl>
+
+        <div class="report-cols">
+          <div>
+            <h4>Threats blocked</h4>
+            <ul class="report-list threats">
+              <li><strong>Phishing email with hidden instructions.</strong> It asked the agent to forward supplier invoices to an outside address. Flagged, not acted on.</li>
+              <li><strong>Reply to an unknown domain.</strong> The agent drafted a reply to a lookalike domain. Held for approval and rejected by a person.</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Your action list</h4>
+            <ol class="report-list actions">
+              <li><span class="prio high">High</span> Warn the finance team about the invoice phishing campaign.</li>
+              <li><span class="prio">Medium</span> Remove the agent's access to the old archive mailbox. It hasn't been used in 60 days.</li>
+              <li><span class="prio">Low</span> Review the 12 drafts a person had to rewrite and update the reply templates.</li>
+            </ol>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="section cta-band">
+      <h2>Want to see what an agent would do for you?</h2>
+      <p>Start with a free intro call. We'll tell you honestly if an agent is worth it.</p>
+      <a class="btn primary btn-lg" href="/?plan=scan#contact">Book a free intro call</a>
+    </section>
+  </main>
+
+  <footer data-site-footer></footer>
+
+  <script src="/config.js"></script>
+  <script src="/agents-data.js"></script>
+  <script src="/layout.js"></script>
+  <script src="/agents.js"></script>
+  <script src="/sales.js"></script>
+</body>
+</html>

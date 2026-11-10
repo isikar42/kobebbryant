@@ -1,33 +1,25 @@
-// Sales parts: prices, the 30-day trial and founding spots from config.js, the ROI calculator
-// and the contact form (opens the visitor's email app via mailto:).
+// Sales parts: prices and founding spots from config.js, the Security Check
+// request and the contact form (both open the visitor's email app via mailto:).
+// The site never scans anything itself: the Security Check form is only a request.
 // Each part only runs when its elements are on the current page.
 
 (() => {
   "use strict";
 
   const cfg = window.SITE_CONFIG;
-  const agents = window.AGENTS || [];
   const $ = (sel) => document.querySelector(sel);
   const $$ = (sel) => document.querySelectorAll(sel);
 
   const PLAN_LABELS = {
-    scan: "Free intro call",
-    starter: "30-day trial: Starter",
-    growth: "30-day trial: Growth",
-    complete: "30-day trial: Complete",
+    check: "Free Security Check",
+    workshop: "Workshop",
+    basis: "Basis plan",
+    plus: "Plus plan",
+    complete: "Complete plan",
   };
 
   const euro = new Intl.NumberFormat("en-IE", { style: "currency", currency: "EUR", maximumFractionDigits: 0 });
-  const num = new Intl.NumberFormat("en-IE", { maximumFractionDigits: 0 });
   const formatPrice = (value) => (value == null ? "[price]" : euro.format(value));
-
-  // The ROI calculator hands its result to the contact form on the home page.
-  const ROI_KEY = "agentlab-roi-message";
-  const store = {
-    get() { try { return sessionStorage.getItem(ROI_KEY); } catch { return null; } },
-    set(v) { try { sessionStorage.setItem(ROI_KEY, v); } catch { /* storage unavailable */ } },
-    clear() { try { sessionStorage.removeItem(ROI_KEY); } catch { /* storage unavailable */ } },
-  };
 
   // ---------- Contact details ----------
   $$("[data-contact-email]").forEach((a) => {
@@ -35,121 +27,49 @@
     a.textContent = cfg.contactEmail;
   });
 
-  // ---------- 30-day trial ----------
-  // The active variant comes from config.js; with no founding spots left it is always "standard".
+  // ---------- Founding spots ----------
   const { totalSpots, spotsLeft } = cfg.founding;
-  const trialVariant = cfg.trial.variant === "founding" && spotsLeft > 0 ? "founding" : "standard";
-  const TRIAL_OFFER = {
-    // TODO: check before going live (trial terms)
-    founding: `<strong>Free for our first ${totalSpots} customers.</strong> In return, we ask for honest feedback and a short case study.`,
-    standard: "<strong>Pay your first month as normal.</strong> Not saving time? You get your money back.",
-  };
-  const TRIAL_STEPS = [
-    { when: "Week 1", title: "We set it up", text: "We connect the agent to your inbox or orders and teach it your rules." },
-    { when: "Week 2–4", title: "It works, you approve", text: "The agent does the work. Nothing goes out without your OK. About 10–15 minutes a day." },
-    { when: "Day 30", title: "You see the results", text: "Time saved, accuracy and threats found, in one short report. You decide." },
-  ];
-
-  $$("[data-trial-offer]").forEach((el) => (el.innerHTML = TRIAL_OFFER[trialVariant]));
-  $$("[data-trial-price]").forEach((el) => (el.textContent = trialVariant === "founding" ? "Free" : "First month"));
   $$("[data-spots-total]").forEach((el) => (el.textContent = totalSpots));
   $$("[data-spots-left]").forEach((el) => (el.textContent = spotsLeft));
-  // Spot counters only make sense while the free founding trial is on offer.
-  $$("[data-founding-only]").forEach((el) => (el.hidden = trialVariant !== "founding"));
-
-  $$("[data-trial-steps]").forEach((el) => {
-    el.innerHTML = `
-      <ol class="loop trial-steps">
-        ${TRIAL_STEPS.map((s, i) => `
-          <li><span class="step-num">${i + 1}</span><p class="kicker">${s.when}</p><h3>${s.title}</h3><p>${s.text}</p></li>`).join("")}
-      </ol>
-      <p class="trial-note">Think of it as a trial period for a new team member.</p>`;
-  });
+  // Hide the founding offer once every spot is taken.
+  $$("[data-founding-only]").forEach((el) => (el.hidden = spotsLeft <= 0));
 
   // ---------- Prices ----------
-  const { packages, annualFreeMonths } = cfg.prices;
-  const starterMonthly = packages.starter;
+  const { plans, monthsPaidPerYear, workshop } = cfg.prices;
+  $$("[data-price]").forEach((el) => {
+    const key = el.dataset.price;
+    el.textContent = formatPrice(key === "workshop" ? workshop : plans[key]);
+  });
+  // Yearly price = monthly price × monthsPaidPerYear
+  $$("[data-price-year]").forEach((el) => {
+    const monthly = plans[el.dataset.priceYear];
+    el.textContent = formatPrice(monthly == null ? null : monthly * monthsPaidPerYear);
+  });
+  $$("[data-months-free]").forEach((el) => (el.textContent = 12 - monthsPaidPerYear));
 
-  function renderPrices() {
-    const checked = $('input[name="billing"]:checked');
-    const annual = checked ? checked.value === "annual" : false;
-    // Annual: shown as the effective monthly price (12 months for the price of 12 - free months)
-    const factor = annual ? (12 - annualFreeMonths) / 12 : 1;
-
-    $$("[data-price]").forEach((el) => {
-      const monthly = packages[el.dataset.price];
-      if (monthly !== undefined) el.textContent = formatPrice(monthly == null ? null : monthly * factor);
-    });
-    $$("[data-annual-note]").forEach((el) => {
-      el.textContent = annual
-        ? `Billed yearly, ${annualFreeMonths} months free included`
-        : `${annualFreeMonths} months free with annual billing`;
-    });
+  // ---------- Sending (shared by both forms) ----------
+  function sendByEmail(subject, lines, status) {
+    window.location.href =
+      `mailto:${cfg.contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join("\n"))}`;
+    status.textContent = `Your email app should open now. If it doesn't, email us at ${cfg.contactEmail}.`;
   }
 
-  $$("[data-free-months]").forEach((el) => (el.textContent = annualFreeMonths));
-  $$('input[name="billing"]').forEach((r) => r.addEventListener("change", renderPrices));
-  renderPrices();
+  // ---------- Free Security Check request ----------
+  const checkForm = $("#security-check-form");
+  if (checkForm) {
+    checkForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      if (!checkForm.reportValidity()) return;
 
-  // ---------- ROI calculator ----------
-  if ($("#roi-form")) {
-    const WEEKS_PER_MONTH = 52 / 12;
-    const d = cfg.roiDefaults;
-    $("#roi-hours").value = d.hoursPerWeek;
-    $("#roi-people").value = d.employees;
-    $("#roi-rate").value = d.hourlyRate;
-    $("#roi-share").value = d.automationPercent;
-
-    const readNumber = (sel) => Math.max(0, parseFloat($(sel).value) || 0);
-    let roi = null;
-
-    const updateRoi = () => {
-      const hours = readNumber("#roi-hours");
-      const people = readNumber("#roi-people");
-      const rate = readNumber("#roi-rate");
-      const share = readNumber("#roi-share");
-
-      const hoursSaved = hours * people * WEEKS_PER_MONTH * (share / 100);
-      const moneySaved = hoursSaved * rate;
-
-      let payback = "[price needed]"; // shown until the Starter price is set in config.js
-      if (starterMonthly != null) {
-        if (moneySaved <= 0) payback = "–";
-        else {
-          const months = starterMonthly / moneySaved;
-          payback = months < 1
-            ? `${Math.max(1, Math.round(months * 30))} days`
-            : `${months.toFixed(1)} months`;
-        }
-      }
-
-      $("#roi-share-out").textContent = `${share}%`;
-      $("#roi-out-hours").textContent = `${num.format(hoursSaved)} h`;
-      $("#roi-out-money").textContent = euro.format(moneySaved);
-      $("#roi-out-payback").textContent = payback;
-
-      roi = { hours, people, rate, share, hoursSaved, moneySaved, payback };
-    };
-
-    $("#roi-form").addEventListener("input", updateRoi);
-    updateRoi();
-
-    // The CTA is a link to the contact form; the message travels via sessionStorage.
-    $("#roi-cta").addEventListener("click", () => {
-      store.set([
-        "Hi, I used the ROI calculator on your site:",
+      const data = Object.fromEntries(new FormData(checkForm));
+      sendByEmail(`Free Security Check: ${data.website}`, [
+        `Website: ${data.website}`,
+        `Name: ${data.name || "-"}`,
+        `Work email: ${data.email || "-"}`,
+        `Platform: ${data.platform}`,
         "",
-        `- Hours per week on the task (per employee): ${roi.hours}`,
-        `- Employees doing it: ${roi.people}`,
-        `- Hourly rate: ${euro.format(roi.rate)}`,
-        `- Share an agent could take over: ${roi.share}%`,
-        "",
-        `Estimated hours saved per month: ${num.format(roi.hoursSaved)} h`,
-        `Estimated savings per month: ${euro.format(roi.moneySaved)}`,
-        `Payback vs. the Starter package: ${roi.payback}`,
-        "",
-        "I'd like to check this in a free intro call.",
-      ].join("\n"));
+        "I own or manage this website and agree to a check of publicly visible information.",
+      ], $("#check-status"));
     });
   }
 
@@ -157,22 +77,11 @@
   const form = $("#contact-form");
   if (!form) return;
 
-  const agentSelect = $("#c-agent");
-  agentSelect.innerHTML = `<option value="">Not sure yet</option>` +
-    agents.map((a) => `<option value="${a.slug}">${a.name} (${a.role})</option>`).join("");
-
-  // Links like /?plan=growth&agent=back-office#contact preselect the form.
+  // Links like /?plan=plus#contact preselect the form.
   const params = new URLSearchParams(location.search);
   if (PLAN_LABELS[params.get("plan")]) $("#c-interest").value = params.get("plan");
-  if (agents.some((a) => a.slug === params.get("agent"))) agentSelect.value = params.get("agent");
 
-  const roiMessage = store.get();
-  if (roiMessage) {
-    $("#c-message").value = roiMessage;
-    store.clear();
-  }
-
-  // Same-page buttons (e.g. the hero CTA) preselect without a reload.
+  // Same-page buttons preselect without a reload.
   $$("[data-plan]").forEach((el) => {
     el.addEventListener("click", () => ($("#c-interest").value = el.dataset.plan));
   });
@@ -183,21 +92,13 @@
 
     const data = Object.fromEntries(new FormData(form));
     const plan = PLAN_LABELS[data.interest];
-    const agent = agents.find((a) => a.slug === data.agent);
-    const subject = `${plan}${agent ? ` (${agent.name})` : ""}: ${data.name}${data.company ? `, ${data.company}` : ""}`;
-    const body = [
+    sendByEmail(`${plan}: ${data.name}${data.company ? `, ${data.company}` : ""}`, [
       `Name: ${data.name}`,
       `Company: ${data.company || "-"}`,
       `Email: ${data.email}`,
       `Interested in: ${plan}`,
-      `Agent: ${agent ? `${agent.name} (${agent.role})` : "Not sure yet"}`,
       "",
       data.message,
-    ].join("\n");
-
-    window.location.href =
-      `mailto:${cfg.contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    $("#contact-status").textContent =
-      `Your email app should open now. If it doesn't, email us at ${cfg.contactEmail}.`;
+    ], $("#contact-status"));
   });
 })();

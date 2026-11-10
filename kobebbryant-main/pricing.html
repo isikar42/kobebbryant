@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Pricing · Agent Lab</title>
-  <meta name="description" content="Start with a free intro call, try an AI agent for 30 days, then pick Starter, Growth or Complete. Monthly packages for webshops, with 2 months free on annual billing.">
+  <!-- TODO: final business name (Defendly is a working title) -->
+  <title>Pricing · Defendly</title>
+  <meta name="description" content="Security plans for webshops: Basis, Plus and Complete, plus a cyber basics workshop for your team. Prices are indicative, excl. VAT.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
@@ -16,118 +17,135 @@
   <main>
     <section id="pricing" class="section page-top">
       <h1>Pricing</h1>
-      <p>Free intro call → Try it for 30 days → Pick your package.</p>
+      <p class="plans-note"><strong>Prices are indicative, excl. VAT.</strong> Pay yearly and get <span data-months-free>2</span> months free.</p>
 
-      <h2 class="pricing-subhead">Start here</h2>
-      <div class="packages start-row">
+      <div class="packages plans">
         <article class="package">
-          <p class="step">Step 1</p>
-          <h3>Free intro call</h3>
-          <p class="price">Free</p>
-          <p class="package-desc">Find out where an agent fits, and where it doesn't.</p>
+          <h3>Basis</h3>
+          <p class="plan-tagline">The basics, sorted.</p>
+          <p class="price"><span data-price="basis">[price]</span><span> / month</span></p>
+          <p class="billing-note">or <span data-price-year="basis">[price]</span> / year (<span data-months-free>2</span> months free)</p>
+          <p class="package-desc"><strong>Best for:</strong> webshops that have never looked at security.</p>
+          <h4>Secure</h4>
           <ul>
-            <li>45–60 minute call</li>
-            <li>Short report with suitable processes</li>
-            <li>Estimated time saved</li>
-            <li>Honest advice, also when the answer is no</li>
+            <li>Baseline check</li>
+            <li>Fixing the basics</li>
+            <li>Monthly scan</li>
+            <li>Monthly report</li>
           </ul>
-          <a class="btn" href="/?plan=scan#contact">Book a free intro call</a>
-        </article>
-
-        <article class="package featured" id="founding">
-          <p class="step">Step 2</p>
-          <h3>Try it for 30 days</h3>
-          <p class="price" data-trial-price>Free</p>
-          <p class="package-desc" data-trial-offer></p>
-          <p class="spots" data-founding-only><strong data-spots-left>10</strong> of <span data-spots-total>10</span> spots left</p>
-          <ul>
-            <li>Week 1: we set it up</li>
-            <li>Week 2–4: it works, you approve</li>
-            <li>Day 30: you see the results</li>
-          </ul>
-          <a class="btn primary" href="#trial-how">How the trial works</a>
-        </article>
-
-        <article class="package">
-          <p class="step">Step 3</p>
-          <h3>Pick your package</h3>
-          <p class="price"><span class="price-from">From </span><span data-price="starter">[price]</span><span> / month</span></p>
-          <p class="package-desc">Continue with the package that fits your shop.</p>
-          <ul>
-            <li>Starter: Front Office</li>
-            <li>Growth: + Back Office</li>
-            <li>Complete: + Code Guard</li>
-            <li>2 months free with annual billing</li>
-          </ul>
-          <a class="btn" href="#packages">Compare packages</a>
-        </article>
-      </div>
-
-      <h2 class="pricing-subhead" id="packages">Packages</h2>
-      <p class="plans-note">
-        <strong>Every plan includes the monthly security report.</strong>
-        Because an agent you can't see into is an agent you shouldn't trust. <a href="/security">What's in the report →</a>
-      </p>
-
-      <div class="billing-switch" role="radiogroup" aria-label="Billing period">
-        <label><input type="radio" name="billing" value="monthly" checked> Monthly</label>
-        <label><input type="radio" name="billing" value="annual"> Annual <span class="save">2 months free</span></label>
-      </div>
-
-      <div class="packages">
-        <article class="package">
-          <h3>Starter</h3>
-          <p class="price"><span data-price="starter">[price]</span><span> / month</span></p>
-          <p class="billing-note" data-annual-note>2 months free with annual billing</p>
-          <p class="package-desc">For small webshops with 1–3 people and a busy inbox.</p>
-          <ul>
-            <li><a href="/agents/front-office">Front Office</a></li>
-            <li>Light security report</li>
-            <li>Monthly tuning</li>
-          </ul>
-          <a class="btn" href="/?plan=starter#contact">Start 30-day trial</a>
+          <h4>Train</h4>
+          <ul><li>Online basic training, once a year</li></ul>
+          <h4>Advise</h4>
+          <ul><li>Emergency plan</li></ul>
+          <a class="btn" href="/?plan=basis#contact">Choose Basis</a>
         </article>
 
         <article class="package featured">
-          <span class="package-badge">Recommended</span>
-          <h3>Growth</h3>
-          <p class="price"><span data-price="growth">[price]</span><span> / month</span></p>
-          <p class="billing-note" data-annual-note>2 months free with annual billing</p>
-          <p class="package-desc">For growing webshops with lots of orders and suppliers.</p>
+          <span class="package-badge">Most popular</span>
+          <h3>Plus</h3>
+          <p class="plan-tagline">Your shop watched every week.</p>
+          <p class="price"><span data-price="plus">[price]</span><span> / month</span></p>
+          <p class="billing-note">or <span data-price-year="plus">[price]</span> / year (<span data-months-free>2</span> months free)</p>
+          <p class="package-desc"><strong>Best for:</strong> webshops with a team and regular orders.</p>
+          <h4>Secure</h4>
           <ul>
-            <li><a href="/agents/front-office">Front Office</a> + <a href="/agents/back-office">Back Office</a></li>
-            <li>Full monthly security report</li>
-            <li>Monthly tuning and email support</li>
+            <li>Everything in Basis</li>
+            <li>Weekly scans and alerts</li>
           </ul>
-          <a class="btn primary" href="/?plan=growth#contact">Start 30-day trial</a>
+          <h4>Train</h4>
+          <ul>
+            <li>Training every quarter</li>
+            <li>2 practice phishing emails a year</li>
+          </ul>
+          <h4>Advise</h4>
+          <ul>
+            <li>Emergency plan</li>
+            <!-- TODO: check before going live (advice line response time) -->
+            <li>Advice line (reply within 1 business day)</li>
+          </ul>
+          <a class="btn primary" href="/?plan=plus#contact">Choose Plus</a>
         </article>
 
         <article class="package">
           <h3>Complete</h3>
+          <p class="plan-tagline">Full cover for your shop and your team.</p>
           <p class="price"><span data-price="complete">[price]</span><span> / month</span></p>
-          <p class="billing-note" data-annual-note>2 months free with annual billing</p>
-          <p class="package-desc">For WooCommerce or Magento shops with custom code or many plugins.</p>
+          <p class="billing-note">or <span data-price-year="complete">[price]</span> / year (<span data-months-free>2</span> months free)</p>
+          <p class="package-desc"><strong>Best for:</strong> larger webshops or shops that handle many payments.</p>
+          <h4>Secure</h4>
           <ul>
-            <li><a href="/agents/front-office">Front Office</a> + <a href="/agents/back-office">Back Office</a> + <a href="/agents/code-guard">Code Guard</a></li>
-            <li>Security report including code analysis, sent straight to your developer</li>
-            <li>Quarterly review and priority support</li>
+            <li>Everything in Plus</li>
+            <li>Monthly account review</li>
+            <li>A new baseline check every year</li>
           </ul>
-          <p class="trial-note-small">Trying Code Guard? We start with a one-time code scan, so you see results right away.</p>
-          <a class="btn" href="/?plan=complete#contact">Start 30-day trial</a>
+          <h4>Train</h4>
+          <ul>
+            <li>Training every quarter</li>
+            <li>Onboarding for new staff</li>
+            <li>4 practice phishing emails a year</li>
+          </ul>
+          <h4>Advise</h4>
+          <ul>
+            <!-- TODO: check before going live (advice line) -->
+            <li>Priority advice line</li>
+            <li>A yearly emergency drill</li>
+          </ul>
+          <a class="btn" href="/?plan=complete#contact">Choose Complete</a>
         </article>
       </div>
     </section>
 
-    <section id="trial-how" class="section">
-      <h2>How the 30-day trial works</h2>
-      <div data-trial-steps></div>
+    <section id="compare" class="section">
+      <h2>Compare plans</h2>
+      <div class="table-scroll" tabindex="0" role="region" aria-label="Plan comparison (scrolls sideways on small screens)">
+        <table class="compare">
+          <thead>
+            <tr><th scope="col">What you get</th><th scope="col">Basis</th><th scope="col">Plus</th><th scope="col">Complete</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Baseline check</th><td>Once</td><td>Once</td><td>Every year</td></tr>
+            <tr><th scope="row">Fix the basics</th><td class="yes">✓<span class="visually-hidden">Included</span></td><td class="yes">✓<span class="visually-hidden">Included</span></td><td class="yes">✓<span class="visually-hidden">Included</span></td></tr>
+            <tr><th scope="row">Scans</th><td>Monthly</td><td>Weekly</td><td>Weekly</td></tr>
+            <tr><th scope="row">Alerts</th><td class="no">–<span class="visually-hidden">Not included</span></td><td class="yes">✓<span class="visually-hidden">Included</span></td><td class="yes">✓<span class="visually-hidden">Included</span></td></tr>
+            <tr><th scope="row">Account review</th><td class="no">–<span class="visually-hidden">Not included</span></td><td class="no">–<span class="visually-hidden">Not included</span></td><td>Monthly</td></tr>
+            <tr><th scope="row">Trainings</th><td>Online, once a year</td><td>Every quarter</td><td>Every quarter + onboarding</td></tr>
+            <tr><th scope="row">Practice phishing emails</th><td class="no">–<span class="visually-hidden">Not included</span></td><td>2 a year</td><td>4 a year</td></tr>
+            <tr><th scope="row">Emergency plan</th><td class="yes">✓<span class="visually-hidden">Included</span></td><td class="yes">✓<span class="visually-hidden">Included</span></td><td class="yes">✓<span class="visually-hidden">Included</span></td></tr>
+            <tr><th scope="row">Advice line</th><td class="no">–<span class="visually-hidden">Not included</span></td><td>Reply within 1 business day</td><td>Priority</td></tr>
+            <tr><th scope="row">Emergency drill</th><td class="no">–<span class="visually-hidden">Not included</span></td><td class="no">–<span class="visually-hidden">Not included</span></td><td>Yearly</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="workshop" class="section">
+      <div class="fit-scan workshop">
+        <div>
+          <p class="kicker">One-off</p>
+          <h2 class="fit-scan-title">Workshop: Cyber basics for webshops</h2>
+          <p>
+            2 hours, for teams up to 10 people. Your team learns to spot phishing, understands
+            ransomware and knows what to do.
+          </p>
+          <p class="price"><span data-price="workshop">[price]</span><span> excl. VAT</span></p>
+        </div>
+        <a class="btn primary btn-lg" href="/?plan=workshop#contact">Book a workshop</a>
+      </div>
+    </section>
+
+    <section id="founding" class="section" data-founding-only>
+      <div class="plans-note founding-note">
+        <!-- TODO: check before going live (founding offer) -->
+        <p><strong>Founding customers:</strong> your first month is free for our first <span data-spots-total>10</span> clients, in return for feedback and a short case study.</p>
+        <p class="spots"><strong data-spots-left>10</strong> of <span data-spots-total>10</span> spots left</p>
+      </div>
     </section>
 
     <section id="faq" class="section">
-      <h2>Questions about the trial or contracts?</h2>
+      <h2>Questions about plans or cancelling?</h2>
       <p>
-        Read how the <a href="/faq#trial">30-day trial</a> works, or what we agree on
-        <a href="/faq#contracts">contracts and payment</a>. <a href="/faq">All questions →</a>
+        Read what we agree on <a href="/faq#plans">plans and payment</a>, or start with a
+        <a href="/#security-check">free Security Check</a>. <a href="/faq">All questions →</a>
       </p>
     </section>
   </main>
@@ -135,9 +153,7 @@
   <footer data-site-footer></footer>
 
   <script src="/config.js"></script>
-  <script src="/agents-data.js"></script>
   <script src="/layout.js"></script>
-  <script src="/agents.js"></script>
   <script src="/sales.js"></script>
 </body>
 </html>

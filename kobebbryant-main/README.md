@@ -1,20 +1,21 @@
 # kobebbryant
 Personal projects
 
-## Agent Lab
+## Defendly
 
-A static multi-page website for a business that builds AI agents for companies. You don't need a build step or any dependencies.
+<!-- TODO: final business name (Defendly is a working title) -->
+
+A static multi-page website for a security service for webshops (mainly WooCommerce and Magento), focused on ransomware and phishing. You don't need a build step or any dependencies.
 
 | URL | Page |
 |-----|------|
-| `/` | Home: hero, problem, package, agents, how we work, pricing summary, FAQ, contact form |
-| `/agents` | All agents, what an agent is, the demo, glossary |
-| `/agents/<slug>` | One page per agent, built from `agents-data.js` |
-| `/pricing` | Free intro call → 30-day trial → Starter, Growth or Complete; trial variant, monthly/annual switch |
-| `/security` | Monthly security report, how we protect data, example report |
-| `/roi-calculator` | ROI calculator |
+| `/` | Home: hero, problem, three pillars, how it works, free Security Check form, plans at a glance, FAQ, contact form |
+| `/how-it-works` | Three steps, example monthly report, what we don't do |
+| `/pricing` | Basis, Plus and Complete (monthly and yearly price), comparison table, workshop, founding offer |
 | `/faq` | All questions, grouped, with FAQPage structured data |
 | `/about`, `/privacy`, `/terms` | Placeholder pages |
+
+Old pages (`/agents`, `/agents/*`, `/security`) redirect to `/how-it-works`; `/roi-calculator` redirects to `/pricing`.
 
 ### Running it
 
@@ -31,24 +32,17 @@ Then open http://localhost:8080 (PowerShell) or the address `serve` prints. Host
 
 | File | Contents |
 |------|----------|
-| `*.html`, `agents/*.html` | One file per page; agent pages only hold their title, description and h1 |
-| `config.js` | Prices, trial variant, founding spots, contact email, ROI defaults |
-| `agents-data.js` | All agent data: texts, example runs, integrations, FAQs |
-| `layout.js` | Shared header, menu (with mobile hamburger) and footer |
-| `agents.js` | Agent cards and the agent page template |
+| `*.html` | One file per page |
+| `config.js` | Prices, founding spots, contact email |
+| `layout.js` | Shared header, menu (with mobile hamburger) and footer; also holds the brand name |
 | `faq-data.js` | All FAQ questions; `home: true` marks the ones on the home page |
 | `faq.js` | Renders the FAQ on the home page and /faq, plus the structured data |
-| `sales.js` | Prices, 30-day trial, founding spots, ROI calculator, contact form |
-| `app.js` | Demo agent (tools, `plan()`, loop) |
+| `sales.js` | Prices, founding spots, the Security Check request and the contact form |
 | `styles.css` | Styling (light and dark theme) |
 | `sitemap.xml`, `robots.txt` | Replace `https://www.example.com` with your domain |
 
-### Adding an agent
+The forms only open the visitor's email app with the request filled in. The site never scans anything itself.
 
-1. Add an entry to `agents-data.js` (set `package` to the cheapest package that includes it).
-2. Copy one of the files in `agents/`, rename it to `<slug>.html` and change its `data-agent`, title, description and h1.
-3. Add the URL to `sitemap.xml`.
+### Other folders
 
-### Claude agent
-
-The [`agent/`](agent/) folder has a Node.js backend that runs a real Claude agent with the same tools. Start it there (see [agent/README.md](agent/README.md)), open http://localhost:3000 and choose **Claude (real LLM)** in the demo on `/agents`.
+[`agent/`](agent/) is an earlier learning project (a Node.js backend for a Claude agent). The website no longer uses it.

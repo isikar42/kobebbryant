@@ -6,32 +6,32 @@
   "use strict";
 
   const cfg = window.SITE_CONFIG;
-  const agents = window.AGENTS || [];
+  const BRAND = "Defendly"; // TODO: final business name
 
   const NAV = [
     { href: "/", label: "Home" },
-    { href: "/agents", label: "Agents" },
+    { href: "/how-it-works", label: "How it works" },
     { href: "/pricing", label: "Pricing" },
-    { href: "/security", label: "Security" },
-    { href: "/roi-calculator", label: "ROI Calculator" },
     { href: "/faq", label: "FAQ" },
     { href: "/about", label: "About" },
   ];
-  const CTA = { href: "/?plan=scan#contact", label: "Free intro call" };
+  const CTA = { href: "/#security-check", label: "Free Security Check" };
 
   // Old one-page anchors that moved to their own page
   const MOVED_ANCHORS = {
     pricing: "/pricing",
     packages: "/pricing",
     founding: "/pricing#founding",
-    roi: "/roi-calculator",
-    what: "/agents#what",
-    demo: "/agents#demo",
-    glossary: "/agents#glossary",
-    "fit-scan": "/#how-we-work",
+    roi: "/pricing",
+    what: "/how-it-works",
+    demo: "/how-it-works",
+    glossary: "/how-it-works",
+    agents: "/how-it-works",
+    "how-we-work": "/how-it-works",
+    "fit-scan": "/#security-check",
   };
 
-  // "/agents/code-guard.html" and "/agents/code-guard/" both become "/agents/code-guard"
+  // "/how-it-works.html" and "/how-it-works/" both become "/how-it-works"
   const normalize = (p) => p.replace(/\/index\.html$/, "/").replace(/\.html$/, "").replace(/(.)\/$/, "$1");
   const here = normalize(location.pathname);
 
@@ -50,10 +50,10 @@
   header.innerHTML = `
     <a class="logo" href="/">
       <svg class="logo-mark" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M6 3h12l4 6-10 12L2 9z" />
-        <path d="M2 9h20M9 3 7.5 9 12 21l4.5-12L15 3" />
+        <path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5z" />
+        <path d="m8.5 12 2.5 2.5 4.5-5" />
       </svg>
-      <span>Agent<em>Lab</em></span>
+      <span>${BRAND.slice(0, -2)}<em>${BRAND.slice(-2)}</em></span>
     </a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">
       <span class="menu-icon" aria-hidden="true"></span><span class="visually-hidden">Menu</span>
@@ -93,20 +93,15 @@
     <div class="site-footer">
       <div class="footer-inner">
         <div>
-          <h3>Agent Lab</h3>
-          <p>AI agents that take repetitive work off your team.</p>
+          <h3>${BRAND}</h3>
+          <p>Security for webshops: we secure your shop, train your team and advise you when things go wrong.</p>
         </div>
         <nav aria-label="Footer">
           <h3>Pages</h3>
           <ul class="footer-links">
             ${NAV.map((n) => `<li>${link(n)}</li>`).join("")}
+            <li><a href="/#security-check">Free Security Check</a></li>
             <li><a href="/#contact">Contact</a></li>
-          </ul>
-        </nav>
-        <nav aria-label="Agents">
-          <h3>Agents</h3>
-          <ul class="footer-links">
-            ${agents.map((a) => `<li>${link({ href: `/agents/${a.slug}`, label: a.name })}</li>`).join("")}
           </ul>
         </nav>
         <div>
@@ -122,7 +117,7 @@
       </div>
     </div>
     <div class="copyright">
-      <p>© ${year} [Your name] · Agent Lab. All rights reserved.
+      <p>© ${year} [Your name] · ${BRAND}. All rights reserved.
         · ${link({ href: "/privacy", label: "Privacy" })} · ${link({ href: "/terms", label: "Terms" })}</p>
     </div>`;
 })();

@@ -3,11 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Agent Lab · AI agents for businesses</title>
-  <meta name="description" content="AI agents with security built in, not bolted on. Every agent comes with a monthly security report. Start with a free intro call.">
+  <!-- TODO: final business name (Defendly is a working title) -->
+  <title>Defendly · Security for webshops</title>
+  <meta name="description" content="Security for webshops: we fix the basics, keep watching, train your team and advise you when things go wrong.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Agent Lab · AI agents for businesses">
-  <meta property="og:description" content="AI agents with security built in, not bolted on.">
+  <meta property="og:title" content="Defendly · Security for webshops">
+  <meta property="og:description" content="Security for webshops: we fix the basics, keep watching, train your team and advise you when things go wrong.">
   <meta name="twitter:card" content="summary">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,130 +21,148 @@
   <main id="top">
     <section class="hero">
       <div class="hero-text">
-        <p class="eyebrow"><span class="pulse" aria-hidden="true"></span>AI agents for businesses</p>
-        <h1>AI agents that work for you, <span class="gradient-text">and stay secure while they do.</span></h1>
+        <!-- TODO: no official partnership with WooCommerce or Magento -->
+        <p class="eyebrow"><span class="pulse" aria-hidden="true"></span>Security for WooCommerce and Magento webshops</p>
+        <h1>Protect your webshop <span class="gradient-text">against ransomware and phishing.</span></h1>
         <p class="lead">
-          We build AI agents that take repetitive work off your team's plate. Every agent comes
-          with a monthly security report, so you always know what it did, what we blocked, and
-          what you should do next.
+          We secure your shop, train your team and help you when things go wrong. In plain
+          language, without taking up your time.
         </p>
         <div class="hero-actions">
-          <a class="btn primary btn-lg" href="#contact" data-plan="scan">Book a free intro call <span aria-hidden="true">→</span></a>
-          <a class="btn btn-lg" href="/agents#demo">See how an agent works</a>
+          <a class="btn primary btn-lg" href="#security-check">Get your free Security Check <span aria-hidden="true">→</span></a>
+          <a class="btn btn-lg" href="/pricing">See our plans</a>
         </div>
         <ul class="hero-stats">
-          <li><strong>Free</strong><span>intro call</span></li>
-          <li><strong>30 days</strong><span>trial</span></li>
-          <li data-founding-only><strong data-spots-left>10</strong><span>free trial spots left</span></li>
+          <li><strong>Free</strong><span>Security Check</span></li>
+          <li><strong>2 business days</strong><span>to your report</span></li>
+          <li data-founding-only><strong data-spots-left>10</strong><span>founding spots left</span></li>
         </ul>
       </div>
 
       <figure class="hero-visual">
-        <svg viewBox="0 0 360 360" role="img" aria-labelledby="loop-title">
-          <title id="loop-title">The agent loop: think, act, observe, and check whether the goal is reached</title>
+        <svg viewBox="0 0 360 360" role="img" aria-labelledby="shield-title">
+          <title id="shield-title">Your shop in the middle, protected by three pillars: secure, train and advise</title>
           <circle class="track" cx="180" cy="180" r="130" />
           <g class="orbit"><circle class="orbit-dot" cx="180" cy="50" r="7" /></g>
 
-          <g class="node node-think">
-            <circle cx="180" cy="50" r="34" /><text x="180" y="55">Think</text>
+          <g class="node node-secure">
+            <circle cx="180" cy="50" r="36" /><text x="180" y="55">Secure</text>
           </g>
-          <g class="node node-act">
-            <circle cx="310" cy="180" r="34" /><text x="310" y="185">Act</text>
+          <g class="node node-train">
+            <circle cx="292.6" cy="245" r="36" /><text x="292.6" y="250">Train</text>
           </g>
-          <g class="node node-observe">
-            <circle cx="180" cy="310" r="34" /><text x="180" y="315">Observe</text>
-          </g>
-          <g class="node node-done">
-            <circle cx="50" cy="180" r="34" /><text x="50" y="185">Done?</text>
+          <g class="node node-advise">
+            <circle cx="67.4" cy="245" r="36" /><text x="67.4" y="250">Advise</text>
           </g>
 
-          <circle class="core" cx="180" cy="180" r="50" />
-          <text class="core-title" x="180" y="178">Goal</text>
-          <text class="core-sub" x="180" y="198">your task</text>
+          <path class="core" d="M180 128 135 146v34c0 26 19 48 45 58 26-10 45-32 45-58v-34z" />
+          <text class="core-title" x="180" y="186">Your shop</text>
         </svg>
       </figure>
     </section>
 
+    <!-- Draft copy: review this text. -->
     <section id="problem" class="section">
-      <h2>Most companies want AI. Few trust it with their data.</h2>
+      <h2>Webshops are an easy target.</h2>
       <p>
-        An AI agent reads your emails, your invoices, your documents, and acts on them. That saves
-        hours every week. It also means a mistake, a leaked key or a malicious email can do real
-        damage. That's why we don't just deliver an agent. We watch over it.
+        Ransomware and phishing don't only hit big companies. A webshop holds customer data,
+        takes payments and has a team that reads email all day. One click on a fake courier
+        email, or one outdated plugin, can stop your sales. Most shop owners know this, but have
+        no time to deal with it. That's where we come in.
       </p>
     </section>
 
-    <section id="package" class="section">
-      <h2>One package. One monthly price.</h2>
-      <div class="cards package-parts">
+    <section id="pillars" class="section">
+      <h2>Three things we do for you</h2>
+      <div class="cards pillars">
         <article class="card">
-          <h3>Your AI agent</h3>
-          <p>Built for one process, connected to your tools, with clear rules for when a person takes over.</p>
+          <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5z" /></svg></span>
+          <h3>Secure</h3>
+          <p>We check your shop, close the gaps and keep scanning every week. You get a monthly report in plain language.</p>
         </article>
         <article class="card">
-          <h3>Monthly security report</h3>
-          <p>What the agent did, which threats it ran into, and concrete actions for your team.</p>
+          <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4zM4 7l8 6 8-6" /></svg></span>
+          <h3>Train</h3>
+          <p>Short trainings and practice emails, so your team spots phishing before anyone clicks.</p>
         </article>
         <article class="card">
-          <h3>Ongoing care</h3>
-          <p>We monitor, tune and update the agent, so it keeps doing the job right.</p>
+          <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 8v5M12 16.5v.5M10.3 3.9 2.4 18a2 2 0 0 0 1.7 3h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z" /></svg></span>
+          <h3>Advise</h3>
+          <p>An emergency plan ready in advance, and advice on the first steps if you're ever attacked.</p>
         </article>
       </div>
-      <p class="security-teaser">
-        Every month you see what your agent did, what we blocked and what to do next.
-        <a href="/security">See how we protect your agent and your data →</a>
-      </p>
     </section>
 
-    <section id="agents" class="section">
+    <section id="how-it-works" class="section">
       <div class="section-head">
-        <h2>Our agents</h2>
-        <a href="/agents">See all agents →</a>
+        <h2>How it works</h2>
+        <a href="/how-it-works">More about how it works →</a>
       </div>
-      <div class="agent-cards" data-agent-cards></div>
+      <ol class="loop">
+        <li><span class="step-num">1</span><h3>Lock it down</h3><p>We check your shop once and fix what's open.</p></li>
+        <li><span class="step-num">2</span><h3>Keep watching</h3><p>Every week we scan for weaknesses and suspicious logins.</p></li>
+        <li><span class="step-num">3</span><h3>Your team</h3><p>Trainings, practice emails and an emergency plan, all year.</p></li>
+      </ol>
     </section>
 
-    <section id="how-we-work" class="section">
-      <h2>How we work</h2>
-      <p>Start small and grow only when it works.</p>
-      <ol class="loop">
-        <li><span class="step-num">1</span><h3>Free intro call</h3><p>A free call and short report on where an agent fits.</p></li>
-        <li><span class="step-num">2</span><h3>Try it for 30 days</h3><p>The agent works on your real emails, orders or invoices while you approve everything.</p></li>
-        <li><span class="step-num">3</span><h3>Pick your package</h3><p>Starter, Growth or Complete: your agents in daily use, with a monthly security report.</p></li>
-      </ol>
-
+    <section id="security-check" class="section">
       <div class="fit-scan">
         <div>
           <p class="kicker">Start here · free</p>
-          <h3 class="fit-scan-title">Free intro call</h3>
+          <h2 class="fit-scan-title">Free Security Check</h2>
           <p>
-            Not sure where AI fits? Start with a free intro call. We'll tell you honestly
-            if an agent is worth it, even if the answer is no.
+            We look at what anyone on the internet can see about your webshop: email settings,
+            certificate and visible software versions. Within 2 business days you get a short report.
           </p>
-          <a class="btn primary btn-lg" href="#contact" data-plan="scan">Book a free intro call <span aria-hidden="true">→</span></a>
+          <p class="fine-print">Sending opens your email app with your request filled in.</p>
         </div>
-        <ul class="check-list">
-          <li><strong>A 45–60 minute call</strong> about your processes and where time goes.</li>
-          <li><strong>A short report</strong> on which processes suit an agent, with an estimate of the time saved.</li>
-          <li><strong>Honest advice</strong>, including when an agent is not the right fit.</li>
-        </ul>
-      </div>
 
-      <h3 class="trial-how-title">How the 30-day trial works</h3>
-      <div data-trial-steps></div>
+        <form id="security-check-form" class="contact-form check-form">
+          <div class="field field-wide">
+            <label for="s-website">Website</label>
+            <input id="s-website" name="website" type="text" inputmode="url" autocomplete="url" placeholder="www.example.com" required>
+          </div>
+          <div class="field">
+            <label for="s-name">Name</label>
+            <input id="s-name" name="name" type="text" autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="s-email">Work email</label>
+            <input id="s-email" name="email" type="email" autocomplete="email">
+          </div>
+          <div class="field field-wide">
+            <label for="s-platform">Webshop platform</label>
+            <!-- TODO: no official partnership with these platforms -->
+            <select id="s-platform" name="platform">
+              <option>WooCommerce</option>
+              <option>Magento</option>
+              <option>Shopify</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field-wide consent">
+            <input id="s-consent" name="consent" type="checkbox" required>
+            <label for="s-consent">I own or manage this website and agree to a check of publicly visible information.</label>
+          </div>
+          <div class="field-wide form-actions">
+            <button class="btn primary" type="submit">Request my free Security Check</button>
+            <span id="check-status" class="fine-print" aria-live="polite"></span>
+          </div>
+        </form>
+      </div>
     </section>
 
     <section id="pricing-summary" class="section">
       <div class="section-head">
-        <h2>Pricing at a glance</h2>
-        <a href="/pricing">See full pricing →</a>
+        <h2>Plans at a glance</h2>
+        <a href="/pricing">See all plans →</a>
       </div>
       <ul class="price-summary">
-        <li><span>Starter</span><strong data-price="starter">[price]</strong><small>per month · Front Office</small></li>
-        <li><span>Growth</span><strong data-price="growth">[price]</strong><small>per month · Front Office + Back Office</small></li>
-        <li><span>Complete</span><strong data-price="complete">[price]</strong><small>per month · all three agents</small></li>
+        <li><span>Basis</span><strong data-price="basis">[price]</strong><small>per month · the basics, sorted</small></li>
+        <li><span>Plus</span><strong data-price="plus">[price]</strong><small>per month · your shop watched every week</small></li>
+        <li><span>Complete</span><strong data-price="complete">[price]</strong><small>per month · full cover for shop and team</small></li>
       </ul>
-      <p class="fine-print"><strong>Try any package for 30 days.</strong> <span data-trial-offer></span> <span data-founding-only><strong data-spots-left>10</strong> of <span data-spots-total>10</span> spots left.</span> <a href="/pricing#founding">How it works</a></p>
+      <p class="fine-print">Prices are indicative, excl. VAT. <span data-founding-only>Founding customers get their first month free: <strong data-spots-left>10</strong> of <span data-spots-total>10</span> spots left.</span> <a href="/pricing#founding">How it works</a></p>
     </section>
 
     <section id="faq" class="section">
@@ -156,7 +175,7 @@
 
     <section id="contact" class="section">
       <h2>Contact</h2>
-      <p>Tell us a little about your work. Sending opens your email app with the message filled in.</p>
+      <p>Tell us a little about your shop. Sending opens your email app with the message filled in.</p>
 
       <form id="contact-form" class="contact-form">
         <div class="field">
@@ -174,15 +193,12 @@
         <div class="field">
           <label for="c-interest">I'm interested in</label>
           <select id="c-interest" name="interest">
-            <option value="scan" selected>Free intro call</option>
-            <option value="starter">30-day trial: Starter</option>
-            <option value="growth">30-day trial: Growth</option>
-            <option value="complete">30-day trial: Complete</option>
+            <option value="check" selected>Free Security Check</option>
+            <option value="workshop">Workshop</option>
+            <option value="basis">Basis</option>
+            <option value="plus">Plus</option>
+            <option value="complete">Complete</option>
           </select>
-        </div>
-        <div class="field field-wide">
-          <label for="c-agent">Which agent?</label>
-          <select id="c-agent" name="agent"></select>
         </div>
         <div class="field field-wide">
           <label for="c-message">Message</label>
@@ -199,10 +215,8 @@
   <footer data-site-footer></footer>
 
   <script src="/config.js"></script>
-  <script src="/agents-data.js"></script>
   <script src="/faq-data.js"></script>
   <script src="/layout.js"></script>
-  <script src="/agents.js"></script>
   <script src="/faq.js"></script>
   <script src="/sales.js"></script>
 </body>

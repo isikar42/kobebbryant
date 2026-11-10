@@ -3,131 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Agents · Agent Lab</title>
-  <meta name="description" content="Three AI agents for webshops: Front Office for customer email, Back Office for orders and invoices, and Code Guard for your code and plugins.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
-  <link rel="stylesheet" href="/styles.css">
+  <title>Moved · Defendly</title>
+  <meta name="robots" content="noindex">
+  <!-- This page no longer exists. Redirects old links. -->
+  <meta http-equiv="refresh" content="0; url=/how-it-works">
+  <link rel="canonical" href="/how-it-works">
+  <script>location.replace("/how-it-works");</script>
 </head>
 <body>
-  <header data-site-header></header>
-
-  <main>
-    <section class="section page-top">
-      <h1>Agents</h1>
-      <p>Each agent takes over one kind of repetitive work, and hands over to a person when it should.</p>
-      <div class="agent-cards" data-agent-cards></div>
-    </section>
-
-    <section id="what" class="section">
-      <h2>What is an AI agent?</h2>
-      <p>
-        A chatbot gives one answer and stops. An <strong>agent</strong> gets a goal and
-        works toward it on its own. It repeats a fixed loop: it thinks about the next step,
-        uses a <em>tool</em>, looks at the result, and decides whether it is done.
-      </p>
-
-      <ol class="loop">
-        <li><span class="step-num">1</span><h3>Goal</h3><p>The user gives a task.</p></li>
-        <li><span class="step-num">2</span><h3>Think</h3><p>The model plans the next step.</p></li>
-        <li><span class="step-num">3</span><h3>Act</h3><p>The model calls a tool, such as search, a calculator or an API.</p></li>
-        <li><span class="step-num">4</span><h3>Observe</h3><p>The tool's result goes back to the model.</p></li>
-        <li><span class="step-num">5</span><h3>Done?</h3><p>No: back to step 2. Yes: the model gives an answer.</p></li>
-      </ol>
-
-      <div class="cards">
-        <article class="card">
-          <h3>Model (LLM)</h3>
-          <p>The "brain". It understands language, makes a plan and picks the right tool.</p>
-        </article>
-        <article class="card">
-          <h3>Tools</h3>
-          <p>Functions the agent is allowed to call. Each tool has a name, a description and parameters.</p>
-        </article>
-        <article class="card">
-          <h3>Memory</h3>
-          <p>What the agent keeps: the conversation history, notes or a knowledge base (RAG).</p>
-        </article>
-        <article class="card">
-          <h3>Guardrails</h3>
-          <p>A maximum number of steps, asking permission for risky actions, and logging.</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="demo" class="section">
-      <h2>Demo: the agent loop in action</h2>
-      <p>
-        Choose <strong>Simulated</strong> to see an agent that picks its tools with simple rules.
-        Choose <strong>Claude</strong> to run a real language model with the same tools. Claude
-        only works when the agent server is running.
-      </p>
-
-      <div class="demo">
-        <div class="mode-switch" role="radiogroup" aria-label="Agent mode">
-          <label><input type="radio" name="mode" value="sim" checked> Simulated (rules)</label>
-          <label><input type="radio" name="mode" value="claude"> Claude (real LLM)</label>
-          <span id="mode-note" class="mode-note"></span>
-        </div>
-
-        <form id="agent-form" class="agent-form">
-          <label for="goal">Give the agent a goal</label>
-          <div class="input-row">
-            <input id="goal" type="text" autocomplete="off"
-                   placeholder="E.g. What is (12 + 8) * 3 and what day is it today?">
-            <button class="btn primary" type="submit">Run</button>
-          </div>
-          <div class="examples">
-            <span>Examples:</span>
-            <button type="button" class="chip">What is (12 + 8) * 3?</button>
-            <button type="button" class="chip">What day is it today?</button>
-            <button type="button" class="chip">Remember that I love basketball</button>
-            <button type="button" class="chip">What do you know about me?</button>
-            <button type="button" class="chip">Count the words in "agents are loops with tools"</button>
-          </div>
-        </form>
-
-        <div class="demo-grid">
-          <div class="panel">
-            <div class="panel-head">
-              <h3>Trace</h3>
-              <span id="status" class="status">Waiting for a goal</span>
-            </div>
-            <ol id="trace" class="trace"></ol>
-          </div>
-          <aside class="panel">
-            <h3>Available tools</h3>
-            <ul id="tool-list" class="tool-list"></ul>
-            <h3>Memory</h3>
-            <ul id="memory" class="memory"><li class="muted">Empty</li></ul>
-          </aside>
-        </div>
-      </div>
-    </section>
-
-    <section id="glossary" class="section">
-      <h2>Glossary</h2>
-      <dl class="glossary">
-        <dt>LLM</dt><dd>Large Language Model. A model that predicts text, such as Claude.</dd>
-        <dt>Tool use / function calling</dt><dd>Besides text, the model can return a structured request to call a function. Your code runs that function.</dd>
-        <dt>ReAct</dt><dd>Reason + Act. A pattern where the model alternates between reasoning and taking actions.</dd>
-        <dt>RAG</dt><dd>Retrieval-Augmented Generation. First fetch relevant documents, then give them to the model.</dd>
-        <dt>MCP</dt><dd>Model Context Protocol. An open standard for connecting tools and data sources to agents.</dd>
-        <dt>Multi-agent</dt><dd>Several agents with their own roles working together, for example a planner and an executor.</dd>
-        <dt>Evals</dt><dd>Tests that measure whether an agent does its tasks correctly and reliably.</dd>
-        <dt>Prompt injection</dt><dd>Outside text, such as a web page, that tries to make the agent do something its creator did not intend.</dd>
-      </dl>
-    </section>
-  </main>
-
-  <footer data-site-footer></footer>
-
-  <script src="/config.js"></script>
-  <script src="/agents-data.js"></script>
-  <script src="/layout.js"></script>
-  <script src="/agents.js"></script>
-  <script src="/sales.js"></script>
-  <script src="/app.js"></script>
+  <p>This page has moved to <a href="/how-it-works">How it works</a>.</p>
 </body>
 </html>

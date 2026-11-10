@@ -12,65 +12,57 @@ window.FAQ = [
     items: [
       {
         home: true,
+        q: "What does the free Security Check look at?",
+        a: "Only information anyone on the internet can see, such as your email settings, certificate and visible software versions. Nothing on your site is changed. Within 2 business days you get a short report.",
+      },
+      {
+        home: true,
+        q: "Do I need technical knowledge?",
+        a: "No. Every action in the report is explained in plain language.",
+      },
+      {
         q: "What happens after I fill in the contact form?",
-        a: "We reply within one business day with a link to book your free intro call. No sales pitch, just a time that works for you.",
-      },
-      {
-        q: "What is the free intro call?",
-        a: "A 45–60 minute call where we look at where your team loses time and which risks you face. Within a few days you get a short report with our advice: which agent fits, the time you could save, and a trial proposal. If an agent isn't worth it for you, we'll say so.",
-      },
-      {
-        q: "Do I need to prepare anything for the intro call?",
-        a: "No. It helps if you know roughly how many emails, orders and invoices you handle per week, and which systems you use.",
-      },
-      {
-        q: "Is the intro call really free?",
-        a: "Yes. There's no obligation to continue.",
+        a: "We reply within one business day. No sales pitch, just answers and a next step that works for you.",
       },
     ],
   },
   {
-    id: "trial",
-    title: "The 30-day trial",
+    id: "security",
+    title: "Security and incidents",
     items: [
       {
+        // TODO: check before going live (incidents)
         home: true,
-        q: "What is the 30-day trial?",
-        a: "For 30 days, the agent works on your real emails, orders or invoices while you approve everything. At the end you see the time saved, accuracy and threats found, and you decide whether to continue.",
+        q: "What happens if we get hit by ransomware?",
+        a: "You follow the emergency plan and we advise on the first steps. Recovery is done by a specialist we refer you to.",
       },
       {
-        // TODO: check before going live (trial cost and money back)
-        q: "What does the trial cost?",
-        a: "Our first {foundingTotal} customers try it for free in return for feedback and a short case study. After that, you pay your first month as normal, with your money back if the agent doesn't save you time.",
+        q: "What is a practice phishing email?",
+        a: "A harmless test email that shows whether your team recognises phishing. We only send them with the owner's written permission, and results are shared per team, not per person.",
       },
       {
-        // TODO: check before going live (money back)
-        home: true,
-        q: "How do you measure \"saving time\"?",
-        a: "Before we start, we agree how much time the task takes now. After 30 days we compare. If there's no clear gain, you don't pay.",
-      },
-      {
-        q: "How much time does the trial take from my team?",
-        a: "A kickoff call, sharing your FAQ and policies, and about 10–15 minutes a day to approve the agent's work.",
+        q: "Is my webshop secure after this?",
+        a: "No one can promise complete security. We fix the basics, keep watching and tell you what to do.",
       },
     ],
   },
   {
-    id: "contracts",
-    title: "Contracts and payment",
+    id: "plans",
+    title: "Plans and payment",
     items: [
       {
         // TODO: check before going live (cancellation)
-        q: "Is there a long contract?",
-        a: "No. Monthly plans can be cancelled with one month's notice. Yearly plans include 2 months free.",
+        home: true,
+        q: "Can I cancel?",
+        a: "Yes. Monthly plans can be cancelled with one month's notice.",
       },
       {
-        q: "Can I switch packages later?",
-        a: "Yes. You can upgrade at any time, for example from Starter to Growth when you want your orders and invoices checked too.",
+        q: "Can I switch plans later?",
+        a: "Yes. You can upgrade at any time, for example from Basis to Plus when you want weekly scans and an advice line.",
       },
       {
-        q: "Which package fits my shop?",
-        a: "Starter suits small shops where most work is in the inbox. Growth adds Back Office for orders and invoices. Complete adds Code Guard for shops with custom code or many plugins. Not sure? The free intro call tells you.",
+        q: "Which plan fits my shop?",
+        a: "Basis suits shops that have never looked at security. Plus is for shops with a team and regular orders. Complete is for larger shops or shops that handle many payments. Not sure? Start with the free Security Check.",
       },
       {
         // TODO: check before going live (payment)
@@ -81,39 +73,16 @@ window.FAQ = [
   },
   {
     id: "data",
-    title: "Data and access",
+    title: "Your data",
     items: [
-      {
-        home: true,
-        q: "What access do you need to our systems?",
-        a: "Only what the agent needs to do its job, through a separate account you create and control. You never share your own passwords, and you can revoke access at any time.",
-      },
       {
         q: "How do you handle our customers' data?",
-        a: "We sign a data processing agreement before connecting any system. Data is only used to run your agent, and we keep as little as possible.",
-      },
-      {
-        q: "Will the agent change anything on my live webshop?",
-        a: "No. Agents prepare work for you to approve, and Code Guard only suggests fixes for your developer.",
-      },
-    ],
-  },
-  {
-    id: "after-the-trial",
-    title: "After the trial",
-    items: [
-      {
-        q: "What happens when we continue?",
-        a: "Your agent moves into daily use. Approval steps are relaxed only where the trial showed the agent gets it right. Your first monthly security report arrives after about 30 days.",
+        a: "We sign a data processing agreement before we connect to any system. Data is only used to protect your shop, and we keep as little as possible.",
       },
       {
         // TODO: check before going live (data deletion)
         q: "What happens if we stop?",
         a: "We remove all access and delete your data, and confirm that to you in writing.",
-      },
-      {
-        q: "Who do I contact if something goes wrong?",
-        a: "You email us directly. For serious incidents, like a hacked webshop, we help you assess the situation and refer you to a specialist incident response team.",
       },
     ],
   },
